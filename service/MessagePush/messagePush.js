@@ -2,12 +2,12 @@ const Request = require('./httpRequst')
 const config = require('./config')
 
 const MessagePusher = function () {
-    this.data = JSON.stringify(config.raw);
+    //this.data = JSON.stringify(config.raw);
 };
 
-MessagePusher.prototype.pushMsgToRobote = function(callback){
+MessagePusher.prototype.pushMsgToRobote = function(msgbody, callback){
     var HttpsRquest = new Request
-    HttpsRquest.post(this.data)
+    HttpsRquest.post(msgbody)
     if(callback){
         callback();
     }

@@ -30,7 +30,7 @@ Mysql.prototype.insert = function (data) {
     })
 }
 
-Mysql.prototype.update = function (data) {
+Mysql.prototype.update = function (data, callback) {
     let updateSql = 'UPDATE igoitem set purchased= ? where itemid = ?'
     let updateParams = data
     this.db.query(updateSql, updateParams, (err, result) => {
@@ -38,21 +38,23 @@ Mysql.prototype.update = function (data) {
             console.log('[UPDATE ERROR] ' + err.message)
         }else{
             console.log('[UPDATE SUCCESS]' + 'Affect ' + result.affectedRows + 'rows')
+            if(callback){
+                callback()
+            }
         }
     })
 }
 
 Mysql.prototype.select = function (itemid, callback) {
-    let query = 'SELECT purchased from igoitem where itemid = ' + itemid
-    this.db.query(query, function (err, results) {
+    let query = 'SELECT purchased,itemname from igoitem where itemid = ' + itemid
+    this.db.query(query, (err, results) => {
         if(err){
-            console.log(err);
+            console.log(err)
         }else{
-            console.log(results[0]);
-            return results[0].purchased
-        }
-        if(callback){
-            callback()
+            console.log(results[0])
+            if (callback) {
+                callback(results[0])
+            }
         }
     })
 }

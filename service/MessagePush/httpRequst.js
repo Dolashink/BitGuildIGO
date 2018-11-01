@@ -5,10 +5,10 @@ const HttpsRequest = function (data) {}
 
 HttpsRequest.prototype.post = function (data) {
     const req = https.request(config.options, (res) => {
-        console.log('statusCode:', res.statusCode)
-        console.log('headers:', res.headers)
+        //console.log('statusCode:', res.statusCode)
+        //console.log('headers:', res.headers)
         res.on('data', (d) => {
-            console.log('' + d)
+            //console.log('' + d)
         })
     })
 
