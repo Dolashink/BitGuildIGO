@@ -18,7 +18,13 @@ contract.prototype.showContractIns = function(){
 
 contract.prototype.getQuantityOfItem = function(type, callback) {
     let ins_contract = this.initWeb3();
-    var res = ins_contract.getQty(type)
+    
+    try {
+        var res = ins_contract.getQty(type)
+    } catch (error) {
+        console.log(error)
+    }
+    
     if (res) {
         if(callback){
             callback(res.toString())
