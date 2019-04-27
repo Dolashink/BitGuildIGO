@@ -1,0 +1,16 @@
+.DS_Store
+.idea
+.eslintcache
+dev
+dist
+views
+logs
+node_modules
+npm-debug.log*
+config.json
+*.tar.gz
+package-lock.json
+.vscode
+var
+.cache-loader
+admin.txt
